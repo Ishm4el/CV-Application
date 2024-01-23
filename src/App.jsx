@@ -24,10 +24,8 @@ function App() {
             <form>
                <button
                   className="button-select-section"
-                  onClick={(e) => {
-                     e.preventDefault();
-                     setFocus(0);
-                  }}
+                  type="button"
+                  onClick={() => setFocus(0)}
                >
                   Personal
                </button>
@@ -39,10 +37,8 @@ function App() {
                </div>
                <button
                   className="button-select-section"
-                  onClick={(e) => {
-                     e.preventDefault();
-                     setFocus(1);
-                  }}
+                  type="button"
+                  onClick={() => setFocus(1)}
                >
                   Education
                </button>
@@ -54,10 +50,8 @@ function App() {
                </div>
                <button
                   className="button-select-section"
-                  onClick={(e) => {
-                     e.preventDefault();
-                     setFocus(2);
-                  }}
+                  type="button"
+                  onClick={() => setFocus(2)}
                >
                   Experience
                </button>
