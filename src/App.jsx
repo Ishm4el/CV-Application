@@ -7,15 +7,21 @@ import Practical from "./components/Practical";
 function App() {
    const [display, setDisplay] = useState({});
    const [dynamicDisplay, setDynamicDisplay] = useState({});
-   const [focus, setFocus] = useState(0);
+   const [focus, setFocus] = useState(1);
 
    function handleDisplay(e) {
       setDisplay({ ...display, [e.target.id]: e.target.value });
    }
 
-   function handleDynamicDisplay(e, id) {
-      console.log(e + " " + id);
-      setDynamicDisplay({ ...dynamicDisplay, test: "up" });
+   function handleDynamicDisplay(e) {
+      setDynamicDisplay((dynamicDisplay) => {
+         dynamicDisplay[e.target.parentNode.dataset.key] = {
+            ...dynamicDisplay[e.target.parentNode.dataset.key],
+         };
+         dynamicDisplay[e.target.parentNode.dataset.key][e.target.id] =
+            e.target.value;
+         return { ...dynamicDisplay };
+      });
    }
 
    return (
@@ -63,7 +69,10 @@ function App() {
                </div>
             </form>
          </div>
-         <div className="container-display">{JSON.stringify(display)}</div>
+         <div className="container-display">
+            {JSON.stringify(display)}
+            {JSON.stringify(dynamicDisplay)}
+         </div>
       </div>
    );
 }
