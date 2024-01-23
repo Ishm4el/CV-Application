@@ -13,9 +13,6 @@ export default function Education({ change }) {
    }
    return (
       <>
-         <button type="button" onClick={addEntry}>
-            Add Education Entry
-         </button>
          {Object.keys(entries).map((value) => (
             <div
                className="container-form-section-sub"
@@ -28,6 +25,9 @@ export default function Education({ change }) {
                </button>
             </div>
          ))}
+         <button type="button" onClick={addEntry}>
+            Add Education Entry
+         </button>
       </>
    );
 }

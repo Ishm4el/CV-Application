@@ -5,22 +5,22 @@ import Education from "./components/Education";
 import Practical from "./components/Practical";
 
 function App() {
-   const [display, setDisplay] = useState({});
-   const [dynamicDisplay, setDynamicDisplay] = useState({});
+   const [display, setDisplayPersonal] = useState({});
+   const [dynamicDisplayEducation, setDynamicDisplayEducation] = useState({});
    const [focus, setFocus] = useState(1);
 
-   function handleDisplay(e) {
-      setDisplay({ ...display, [e.target.id]: e.target.value });
+   function handleDisplayPersonal(e) {
+      setDisplayPersonal({ ...display, [e.target.id]: e.target.value });
    }
 
-   function handleDynamicDisplay(e) {
-      setDynamicDisplay((dynamicDisplay) => {
-         dynamicDisplay[e.target.parentNode.dataset.key] = {
-            ...dynamicDisplay[e.target.parentNode.dataset.key],
+   function handleDynamicDisplayEducation(e) {
+      setDynamicDisplayEducation((dynamicDisplayEducation) => {
+         dynamicDisplayEducation[e.target.parentNode.dataset.key] = {
+            ...dynamicDisplayEducation[e.target.parentNode.dataset.key],
          };
-         dynamicDisplay[e.target.parentNode.dataset.key][e.target.id] =
+         dynamicDisplayEducation[e.target.parentNode.dataset.key][e.target.id] =
             e.target.value;
-         return { ...dynamicDisplay };
+         return { ...dynamicDisplayEducation };
       });
    }
 
@@ -39,7 +39,7 @@ function App() {
                   className="container-form-section"
                   style={focus === 0 ? {} : { display: "none" }}
                >
-                  <Personal change={handleDisplay} />
+                  <Personal change={handleDisplayPersonal} />
                </div>
                <button
                   className="button-select-section"
@@ -52,7 +52,7 @@ function App() {
                   className="container-form-section"
                   style={focus === 1 ? {} : { display: "none" }}
                >
-                  <Education change={handleDynamicDisplay} />
+                  <Education change={handleDynamicDisplayEducation} />
                </div>
                <button
                   className="button-select-section"
@@ -65,13 +65,13 @@ function App() {
                   className="container-form-section"
                   style={focus === 2 ? {} : { display: "none" }}
                >
-                  <Practical change={handleDynamicDisplay} />
+                  <Practical change={handleDynamicDisplayEducation} />
                </div>
             </form>
          </div>
          <div className="container-display">
             {JSON.stringify(display)}
-            {JSON.stringify(dynamicDisplay)}
+            {JSON.stringify(dynamicDisplayEducation)}
          </div>
       </div>
    );
