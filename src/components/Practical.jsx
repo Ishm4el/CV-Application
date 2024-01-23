@@ -4,8 +4,12 @@ export default function Practical() {
    const [entries, setEntries] = useState({});
    function addEntry() {
       const newID = crypto.randomUUID();
-      const newEntry = entry(newID);
+      const newEntry = entry(newID, setEntries);
       setEntries({ ...entries, [newID]: newEntry });
+   }
+   function removeEntry(id) {
+      delete entries[id];
+      setEntries({ ...entries });
    }
    return (
       <>
@@ -15,6 +19,9 @@ export default function Practical() {
          {Object.keys(entries).map((value) => (
             <div className="container-form-section-sub" key={value}>
                {entries[value]}
+               <button type="button" onClick={() => removeEntry(value)}>
+                  Remove
+               </button>
             </div>
          ))}
       </>

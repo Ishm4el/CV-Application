@@ -7,6 +7,10 @@ export default function Education() {
       const newEntry = entry(newID);
       setEntries({ ...entries, [newID]: newEntry });
    }
+   function removeEntry(id) {
+      delete entries[id];
+      setEntries({ ...entries });
+   }
    return (
       <>
          <button type="button" onClick={addEntry}>
@@ -15,6 +19,9 @@ export default function Education() {
          {Object.keys(entries).map((value) => (
             <div className="container-form-section-sub" key={value}>
                {entries[value]}
+               <button type="button" onClick={() => removeEntry(value)}>
+                  Remove
+               </button>
             </div>
          ))}
       </>
