@@ -1,6 +1,6 @@
 export default function componentPersonal({ change }) {
    return (
-      <div className="container-form-section">
+      <>
          <label htmlFor="fname">First Name:</label>
          <input type="text" id="fname" name="fname" onChange={change} />
          <label htmlFor="lname">Last Name:</label>
@@ -14,6 +14,6 @@ export default function componentPersonal({ change }) {
             id="phoneNumber"
             onChange={change}
          />
-      </div>
+      </>
    );
 }

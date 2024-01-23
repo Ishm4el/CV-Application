@@ -8,7 +8,7 @@ export default function Education() {
       setEntries({ ...entries, [newID]: newEntry });
    }
    return (
-      <div className="container-form-section">
+      <>
          <button type="button" onClick={addEntry}>
             Add Education Entry
          </button>
@@ -17,7 +17,7 @@ export default function Education() {
                {entries[value]}
             </div>
          ))}
-      </div>
+      </>
    );
 }
 
