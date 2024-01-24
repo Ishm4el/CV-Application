@@ -7,6 +7,7 @@ import Practical from "./components/Practical";
 function App() {
    const [display, setDisplayPersonal] = useState({});
    const [dynamicDisplayEducation, setDynamicDisplayEducation] = useState({});
+   const [dynamicDisplayExperience, setDynamicDisplayExperience] = useState({});
    const [focus, setFocus] = useState(1);
 
    function handleDisplayPersonal(e) {
@@ -14,20 +15,30 @@ function App() {
    }
 
    function handleDynamicDisplayEducation(e) {
-      setDynamicDisplayEducation((dynamicDisplayEducation) => {
-         dynamicDisplayEducation[e.target.parentNode.dataset.key] = {
-            ...dynamicDisplayEducation[e.target.parentNode.dataset.key],
-         };
-         dynamicDisplayEducation[e.target.parentNode.dataset.key][e.target.id] =
-            e.target.value;
-         return { ...dynamicDisplayEducation };
-      });
+      setDynamicDisplayEducation((dynamicDisplayEducation) =>
+         dynamicSetter(dynamicDisplayEducation, e)
+      );
+   }
+
+   function handleDynamicDisplayExperience(e) {
+      setDynamicDisplayEducation((dynamicDisplayEducation) =>
+         dynamicSetter(dynamicDisplayEducation, e)
+      );
+   }
+
+   function dynamicSetter(dynamicDisplay, e) {
+      dynamicDisplay[e.target.parentNode.dataset.key] = {
+         ...dynamicDisplay[e.target.parentNode.dataset.key],
+      };
+      dynamicDisplay[e.target.parentNode.dataset.key][e.target.id] =
+         e.target.value;
+      return { ...dynamicDisplay };
    }
 
    return (
       <div className="container-main">
          <div className="container-form">
-            <form>
+            <div className="container-section">
                <button
                   className="button-select-section"
                   type="button"
@@ -41,6 +52,8 @@ function App() {
                >
                   <Personal change={handleDisplayPersonal} />
                </div>
+            </div>
+            <div className="container-section">
                <button
                   className="button-select-section"
                   type="button"
@@ -54,6 +67,8 @@ function App() {
                >
                   <Education change={handleDynamicDisplayEducation} />
                </div>
+            </div>
+            <div className="container-section">
                <button
                   className="button-select-section"
                   type="button"
@@ -67,7 +82,7 @@ function App() {
                >
                   <Practical change={handleDynamicDisplayEducation} />
                </div>
-            </form>
+            </div>
          </div>
          <div className="container-display">
             {JSON.stringify(display)}

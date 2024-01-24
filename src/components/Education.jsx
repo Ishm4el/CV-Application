@@ -5,7 +5,10 @@ export default function Education({ change }) {
    function addEntry() {
       const newID = crypto.randomUUID();
       const newEntry = entry(newID, change);
+      // newEntry.props.children[1].focus();
       setEntries({ ...entries, [newID]: newEntry });
+      //   console.log(document.getElementById("schoolName"));
+      //   document.getElementById("schoolName").focus();
    }
    function removeEntry(id) {
       delete entries[id];

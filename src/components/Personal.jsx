@@ -6,7 +6,13 @@ export default function componentPersonal({ change }) {
          <label htmlFor="lname">Last Name:</label>
          <input type="text" id="lname" name="lname" onChange={change} />
          <label htmlFor="email">Email:</label>
-         <input type="email" name="email" id="email" onChange={change} />
+         <input
+            type="email"
+            name="email"
+            id="email"
+            onChange={change}
+            autoComplete="on"
+         />
          <label htmlFor="phoneNumber">Phone Number:</label>
          <input
             type="tel"
